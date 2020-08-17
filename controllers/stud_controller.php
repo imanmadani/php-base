@@ -31,7 +31,6 @@ class stud_controller extends controller{
 		$name = $this->getVal('name',$row);
 		$avgr = $this->getVal('avgr',$row);
 		$fid  = $this->getVal('fid',$row);
-		
 		if ( $sid==0 )
 		     $this->_model->addRow($name , $avgr , $fid );
 		else $this->_model->editRow($sid,$name , $avgr , $fid );

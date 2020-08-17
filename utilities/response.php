@@ -1,7 +1,6 @@
 <?php 
 class Response 
 {
-
     protected $_data = array();
     public function set($key, $value)
     {

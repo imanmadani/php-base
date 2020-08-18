@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Token.php';
 
 class User extends Token
 {

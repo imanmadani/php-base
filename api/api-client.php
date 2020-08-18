@@ -1,10 +1,9 @@
 <?php
 class APIClient
 {
-    protected $token = "123456789abcde12";
     public function request($class, $method, $params = [])
     {
-        $params['token'] = $this->token;
+        $params['token'] = $_GET['token'];
         if (file_exists(HOME . DS . 'utilities' . DS . strtolower($class) . '.php')) {
             require_once HOME . DS . 'utilities' . DS . strtolower($class) . '.php';
         }
@@ -19,9 +18,12 @@ class APIClient
         $modelName = $class;
         $controller = $class . '_controller';
         $load = new $controller($modelName, $method);
-        if ($load->checkToken($params)) {
+        $checkToken=$load->checkToken($params);
+        if ($checkToken>0) {
+            $load->setTokenHistory($checkToken,$controller,$method);
             if (method_exists($load, $method)) {
                 $load->$method($params);
+//                $load->setTokenHistory($checkToken);
             } else {
                 $load->error("invalid metod");
             }

@@ -5,15 +5,15 @@ require_once HOME . DS . 'config.php';
 require_once "api-client.php";
 include("../utilities/response.php");
 
-if (isset($_GET['id']))
-{
-    $params = explode("/", $_GET['id']);
-    if (isset($params[1]) && !empty($params[1]))
-    {
-        $action = $params[1];
-    }
-}
+//if (isset($_GET['id']))
+//{
+//    $params = explode("/", $_GET['id']);
+//    if (isset($params[1]) && !empty($params[1]))
+//    {
+//        $action = $params[1];
+//    }
+//}
 $api=new APIClient();
-$res=$api->request("stud",$action,array('fid'=>3));
+$res=$api->request("User",Get,array('fid'=>3));
 echo $res;
 ?>

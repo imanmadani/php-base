@@ -5,4 +5,7 @@ require_once HOME . DS . 'config.php';
 require_once "api-client.php";
 include("../utilities/response.php");
 
+$api=new APIClient();
+$res=$api->request("User",'Get');
+echo $res;
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 
-class User
+class User extends Token
 {
     public $Id;
     public $UserName;

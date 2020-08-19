@@ -26,4 +26,5 @@ class User_controller extends controller
         $this->_res->set("row", $row);
         $this->_res->output();
     }
+
 }

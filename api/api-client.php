@@ -23,7 +23,6 @@ class APIClient
             $load->setTokenHistory($checkToken,$controller,$method);
             if (method_exists($load, $method)) {
                 $load->$method($params);
-//                $load->setTokenHistory($checkToken);
             } else {
                 $load->error("invalid metod");
             }

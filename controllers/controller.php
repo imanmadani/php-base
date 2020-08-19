@@ -30,7 +30,7 @@ class controller
     {
         $token = $this->getVal('token', $query);
         $row = $this->_model->getUserByToken($token);
-        if ($row) return true;
+        if ($row) return $row['Id'];
         return false;
     }
 

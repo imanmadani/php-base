@@ -36,7 +36,7 @@ class controller
 
     public function setTokenHistory($tokenId,$controller,$method)
     {
-        echo $tokenId."-".$controller."-".$method;
+        //echo $tokenId."-".$controller."-".$method;
         $row = $this->_model->setTokenHistory($tokenId,$controller,$method);
         if ($row) return true;
         return false;

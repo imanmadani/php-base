@@ -43,7 +43,6 @@ class model
     {
         $sqlTokenHistory = "INSERT INTO `tokenhistory`(`TokenId`, `Controller`, `Method`)
                                                   VALUES($tokenId,'$controller','$method')";
-        echo $sqlTokenHistory;
         $row = $this->execQuery($sqlTokenHistory);
         return ($row);
     }

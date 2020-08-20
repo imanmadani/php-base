@@ -3,7 +3,7 @@ class stud_controller extends controller{
 	public function indexas($query)
 	{
         foreach ($query as $item) {
-            echo $item;
+//            echo $item;
         }
 		$fid= $this->getVal('fid', $query);
 	    $rows = $this->_model->getRows($fid); 	

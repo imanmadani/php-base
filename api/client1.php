@@ -15,5 +15,4 @@ include("../utilities/response.php");
 //}
 $api=new APIClient();
 $res=$api->request("User",Get,array('fid'=>3));
-//echo $res;
 ?>

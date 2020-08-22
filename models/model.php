@@ -33,9 +33,9 @@ class model
         return $row;
     }
 
-    public function getUserByToken($token)
+    public function getUserByToken($token,$ip)
     {
-        $row = $this->getRow("SELECT * FROM `token` WHERE TokenCode='$token'");
+        $row = $this->getRow("SELECT * FROM `token` WHERE TokenCode='$token' and Ip='$ip'");
         return ($row);
     }
 
@@ -43,7 +43,6 @@ class model
     {
         $sqlTokenHistory = "INSERT INTO `tokenhistory`(`TokenId`, `Controller`, `Method`)
                                                   VALUES($tokenId,'$controller','$method')";
-        $sqlTokenHistory;
         $row = $this->execQuery($sqlTokenHistory);
         return ($row);
     }

@@ -3,7 +3,6 @@ class APIClient
 {
     public function request($class, $method, $params = [])
     {
-        $params['token'] = $_GET['token'];
         if (file_exists(HOME . DS . 'utilities' . DS . strtolower($class) . '.php')) {
             require_once HOME . DS . 'utilities' . DS . strtolower($class) . '.php';
         }

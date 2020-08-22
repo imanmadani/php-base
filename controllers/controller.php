@@ -29,14 +29,14 @@ class controller
     public function checkToken($query)
     {
         $token = $this->getVal('token', $query);
-        $row = $this->_model->getUserByToken($token);
-        if ($row) return $row['Id'];
+        $ip=$_SERVER['REMOTE_ADDR'];
+        $row = $this->_model->getUserByToken($token,$ip);
+        if ($row) return true;
         return false;
     }
 
     public function setTokenHistory($tokenId,$controller,$method)
     {
-        echo $tokenId."-".$controller."-".$method;
         $row = $this->_model->setTokenHistory($tokenId,$controller,$method);
         if ($row) return true;
         return false;

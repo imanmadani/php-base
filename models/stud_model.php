@@ -1,7 +1,6 @@
 <?php
 class stud_model extends model{
 	public function getRows($fid=""){
-	    echo $fid;
 		$sql ="SELECT * FROM studs";
 		if($fid!="")
 			$sql.=" WHERE fid=$fid ";

@@ -10,19 +10,23 @@ class User_model extends model
         return $rows;
     }
 
-    public function login($userName = "", $passWord = "")
+    public function login($username = "", $password = "")
     {
         $sqlUser = "SELECT * FROM users";
-        if ($userName != "" and $passWord != "")
-            $sqlUser .= " WHERE Username=$userName and Password=$passWord";
+        if ($username != "" and $password != "")
+            $sqlUser .= " WHERE Username='$username' and Password='$password'";
         $row = $this->getRow($sqlUser);
         $userEntity = new User();
         $userEntity->Id = $row['Id'];
-        $userEntity->UserName = $row['UserName'];
-        $sqlToken = "INSERT INTO Token (UserId,TokenCode,FlagValid,InsertTime,UpdateTime)
-                               VALUES($userEntity->Id,'Token',true,Date('c')); ";
+        $userEntity->UserName = $row['Username'];
+        $userEntity->Ip=$_SERVER['REMOTE_ADDR'];
+        $TokenCode=md5($row['Username']).bin2hex(openssl_random_pseudo_bytes(10));
+        $sqlToken = "INSERT INTO Token (UserId,Ip,TokenCode)
+                               VALUES($userEntity->Id,'$userEntity->Ip','$TokenCode'); ";
         $res = $this->execQuery($sqlToken);
-        $userEntity->TokenCode = 'Token';
+        if($res){
+            $userEntity->TokenCode = $TokenCode;
+        }
         return $userEntity;
     }
 

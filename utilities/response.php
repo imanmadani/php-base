@@ -18,7 +18,7 @@ class Response
         $res['massage']=$message;
         $res['data'] = $this->_data;
         $res=json_encode($res);
-        //echo $res;
+        echo  $res;
         exit;
     }
 }
